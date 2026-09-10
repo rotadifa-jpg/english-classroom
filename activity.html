@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>English Class Activities</title><link rel="stylesheet" href="style.css">
+</head>
+<body class="activity-page">
+<img class="activity-bg" src="activitypage.png" alt="Classroom board">
+<a class="homebtn" href="index.html">🏠 Home</a>
+<main class="activity-content">
+<h1>ENGLISH CLASS</h1><p>Choose an activity</p>
+<section class="activity-grid">
+<button onclick="showPanel('spinner')"><img src="spinner.png" alt=""><span>Spinner</span></button>
+<button onclick="showPanel('alphabet')"><img src="alphabet.png" alt=""><span>Alphabet</span></button>
+<button onclick="showPanel('numbers')"><img src="numbers.png" alt=""><span>Numbers</span></button>
+<button onclick="showPanel('weather')"><img src="weather.png" alt=""><span>Weather</span></button>
+<button onclick="showPanel('calendar')"><img src="calendar.png" alt=""><span>Calendar</span></button>
+<button onclick="showPanel('songs')"><img src="songs.png" alt=""><span>Songs</span></button>
+<button onclick="showPanel('colors')"><img src="colors.png" alt=""><span>Colors</span></button>
+<button onclick="showPanel('teacher')"><img src="teacher-corner.png" alt=""><span>Teacher Corner</span></button>
+</section>
+<div id="panel" class="panel"><button class="close" onclick="closePanel()">✕</button><div id="panelContent"></div></div>
+</main>
+<script>
+const panel=document.getElementById('panel'),content=document.getElementById('panelContent');
+function showPanel(n){const t={
+spinner:`<h2>🎡 Name / Number Spinner</h2><p>Enter names or numbers, then press SPIN.</p><div class="tabs"><button onclick="spinMode('names')">Student Names</button><button onclick="spinMode('numbers')">Numbers 1–22</button></div><textarea id="spinList" rows="6" placeholder="Enter one name per line"></textarea><button class="action" onclick="saveSpinList()">Save List</button><div class="wheel">🎯</div><div id="spinResult" class="result">Ready!</div><button class="big action" onclick="spin()">🎡 SPIN!</button>`,
+alphabet:`<h2>🔤 Alphabet Practice</h2><div class="practice-grid"><button onclick="speak('A')">🔊 Listen & Click</button><button onclick="letterMatch()">🔠 Match Big to Small</button><button onclick="traceLetter()">✏️ Trace the Letter</button><button onclick="listenWrite()">📝 Listen and Write</button></div><div id="practiceArea" class="practice-area"></div>`,
+numbers:`<h2>🔢 Numbers Practice</h2><div class="practice-grid"><button onclick="speak('seven')">🔊 Listen & Click</button><button onclick="numberMatch()">🔢 Match Number to Word</button><button onclick="traceNumber()">✏️ Trace the Number</button><button onclick="countClick()">🍎 Count and Click</button></div><div id="practiceArea" class="practice-area"></div>`,
+weather:`<h2>☀️ Weather Practice</h2><p class="prompt">Look at the weather today. Complete the sentence:<br><strong>Today is ______ day.</strong></p><div class="weather-grid"><button onclick="weatherCheck('sunny')">☀️ Sunny</button><button onclick="weatherCheck('rainy')">🌧️ Rainy</button><button onclick="weatherCheck('cloudy')">☁️ Cloudy</button><button onclick="weatherCheck('windy')">💨 Windy</button></div><div class="drop">🎯 Drag a weather picture/word here</div><div id="weatherResult" class="result"></div>`,
+calendar:`<h2>📅 Calendar</h2><div id="calendarBox" class="calendar"></div>`,
+songs:`<h2>🎵 Songs Storage</h2><input id="youtubeUrl" placeholder="Paste a YouTube link"><button class="action" onclick="addYouTube()">Add YouTube Song</button><hr><label>Upload an audio song (under 5 MB):</label><input id="audioFile" type="file" accept="audio/*" onchange="saveAudio(event)"><div id="songsList"></div>`,
+colors:`<h2>🎨 Colors Practice</h2><p>Listen and click the color you hear.</p><button class="action" onclick="colorQuestion()">🔊 Listen</button><div class="color-grid"><button data-color="red" onclick="colorAnswer('red')">RED</button><button data-color="blue" onclick="colorAnswer('blue')">BLUE</button><button data-color="green" onclick="colorAnswer('green')">GREEN</button><button data-color="yellow" onclick="colorAnswer('yellow')">YELLOW</button><button data-color="orange" onclick="colorAnswer('orange')">ORANGE</button><button data-color="purple" onclick="colorAnswer('purple')">PURPLE</button><button data-color="pink" onclick="colorAnswer('pink')">PINK</button><button data-color="brown" onclick="colorAnswer('brown')">BROWN</button></div><div id="colorResult" class="result"></div>`,
+teacher:`<h2>👩‍🏫 Teacher Corner</h2><p>Add your Canva, class, or other teacher links here.</p><input id="teacherName" placeholder="Link name"><input id="teacherUrl" placeholder="Paste link"><button class="action" onclick="addTeacherLink()">Save Link</button><div id="teacherList"></div>`};content.innerHTML=t[n]||'';panel.classList.add('show');if(n==='spinner')loadSpinList();if(n==='calendar')makeCalendar();if(n==='songs')loadSongs();if(n==='teacher')loadTeacherLinks()}
+function closePanel(){panel.classList.remove('show')}
+let mode='names';function spinMode(m){mode=m;const x=document.getElementById('spinList');x.value=m==='numbers'?Array.from({length:22},(_,i)=>i+1).join('\n'):(localStorage.getItem('spinNames')||'')}
+function saveSpinList(){localStorage.setItem('spinNames',document.getElementById('spinList').value)}function loadSpinList(){spinMode('names')}
+function spin(){const a=document.getElementById('spinList').value.split(/\n|,/).map(x=>x.trim()).filter(Boolean),r=document.getElementById('spinResult');if(!a.length){r.textContent='Please enter some names or numbers!';return}r.textContent='🎡 Spinning...';setTimeout(()=>r.textContent='⭐ '+a[Math.floor(Math.random()*a.length)]+' ⭐',1200)}
+function speak(t){if(localStorage.getItem('soundOn')==='false')return;if('speechSynthesis'in window){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}}
+function letterMatch(){const a=['A','B','C','D','E','F','G','H'],t=a[Math.floor(Math.random()*a.length)];document.getElementById('practiceArea').innerHTML=`<p>Match the big letter <b>${t}</b> with the small letter.</p><div class="choice-row">${a.map(x=>`<button onclick="this.classList.toggle('correct')">${x.toLowerCase()}</button>`).join('')}</div>`}
+function traceLetter(){document.getElementById('practiceArea').innerHTML='<div class="trace">A</div><p>Trace the letter A.</p>'}function listenWrite(){document.getElementById('practiceArea').innerHTML='<button class="action" onclick="speak(\'B\')">🔊 Hear the letter</button><input class="answer" placeholder="Write the letter"><button class="action" onclick="alert(this.previousElementSibling.value.toUpperCase()===\'B\'?\'Correct!\':\'Try again!\')">Check</button>'}
+function numberMatch(){document.getElementById('practiceArea').innerHTML='<p>Match 7 with its word.</p><div class="choice-row"><button onclick="alert(\'Try again!\')">six</button><button onclick="alert(\'Correct!\')">seven</button><button onclick="alert(\'Try again!\')">eight</button></div>'}function traceNumber(){document.getElementById('practiceArea').innerHTML='<div class="trace">7</div><p>Trace the number 7.</p>'}function countClick(){document.getElementById('practiceArea').innerHTML='<p>How many apples?</p><div class="count">🍎 🍎 🍎 🍎 🍎</div><div class="choice-row"><button onclick="alert(\'Correct!\')">5</button><button onclick="alert(\'Try again!\')">4</button><button onclick="alert(\'Try again!\')">6</button></div>'}
+function weatherCheck(a){const e=['sunny','rainy','cloudy','windy'][new Date().getDay()%4];document.getElementById('weatherResult').textContent=a===e?'⭐ Great job!':'Try another weather word!'}
+function makeCalendar(){const d=new Date();document.getElementById('calendarBox').innerHTML=`<div>📅</div><strong>${d.toLocaleDateString(undefined,{weekday:'long'})}</strong><b>${d.toLocaleDateString(undefined,{month:'long'})}</b><span>${d.getDate()}</span><p>${d.toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}</p>`}
+function addYouTube(){const u=document.getElementById('youtubeUrl').value.trim();if(!u)return;const l=JSON.parse(localStorage.getItem('songs')||'[]');l.push({type:'youtube',url:u});localStorage.setItem('songs',JSON.stringify(l));document.getElementById('youtubeUrl').value='';loadSongs()}
+function saveAudio(e){const f=e.target.files[0];if(!f||f.size>5*1024*1024){alert('Please choose an audio file under 5 MB.');return}const r=new FileReader();r.onload=()=>{const l=JSON.parse(localStorage.getItem('songs')||'[]');l.push({type:'audio',name:f.name,data:r.result});localStorage.setItem('songs',JSON.stringify(l));loadSongs()};r.readAsDataURL(f)}
+function loadSongs(){const l=JSON.parse(localStorage.getItem('songs')||'[]');document.getElementById('songsList').innerHTML=l.map((x,i)=>x.type==='youtube'?`<div class="saved"><a href="${x.url}" target="_blank" rel="noopener">▶ Open YouTube Song</a><button onclick="deleteSong(${i})">Delete</button></div>`:`<div class="saved"><b>${x.name}</b><audio controls src="${x.data}"></audio><button onclick="deleteSong(${i})">Delete</button></div>`).join('')||'<p>No songs saved yet.</p>'}
+function deleteSong(i){const l=JSON.parse(localStorage.getItem('songs')||'[]');l.splice(i,1);localStorage.setItem('songs',JSON.stringify(l));loadSongs()}
+let target='red';function colorQuestion(){target=['red','blue','green','yellow','orange','purple','pink','brown'][Math.floor(Math.random()*8)];speak(target);document.getElementById('colorResult').textContent='Click the color you heard!'}function colorAnswer(c){document.getElementById('colorResult').textContent=c===target?'⭐ Correct!':'Try again!'}
+function addTeacherLink(){const n=document.getElementById('teacherName').value.trim(),u=document.getElementById('teacherUrl').value.trim();if(!n||!u)return;const l=JSON.parse(localStorage.getItem('teacherLinks')||'[]');l.push({name:n,url:u});localStorage.setItem('teacherLinks',JSON.stringify(l));loadTeacherLinks()}
+function loadTeacherLinks(){const l=JSON.parse(localStorage.getItem('teacherLinks')||'[]');document.getElementById('teacherList').innerHTML=l.map((x,i)=>`<div class="saved"><a href="${x.url}" target="_blank" rel="noopener">🔗 ${x.name}</a><button onclick="deleteTeacher(${i})">Delete</button></div>`).join('')||'<p>No teacher links saved yet.</p>'}function deleteTeacher(i){const l=JSON.parse(localStorage.getItem('teacherLinks')||'[]');l.splice(i,1);localStorage.setItem('teacherLinks',JSON.stringify(l));loadTeacherLinks()}
+</script></body></html>
