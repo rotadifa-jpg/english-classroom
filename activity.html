@@ -1,25 +1,1708 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>English Class Activities</title><link rel="stylesheet" href="style.css"></head><body class="activities"><img src="activitypage.png" class="bg fixed" alt="Jungle classroom"><a href="index.html" class="homebtn">🏠 Home</a><h1>ENGLISH CLASS</h1><p class="subtitle">Choose an activity</p><div id="menu" class="menu">
-<button data-p="spinner">🎡<b>Name / Number<br>Spinner</b></button><button data-p="alphabet">🔤<b>Alphabet<br>Practice</b></button><button data-p="numbers">🔢<b>Numbers<br>Practice</b></button><button data-p="weather">☀️<b>Weather<br>Practice</b></button><button data-p="calendar">📅<b>Calendar<br>Today</b></button><button data-p="songs">🎵<b>Songs<br>Storage</b></button><button data-p="colors">🎨<b>Colors<br>Practice</b></button><button data-p="teacher">👩‍🏫<b>Teacher<br>Corner</b></button></div>
-<section id="spinner" class="panel"><h2>🎡 Name / Number Spinner</h2><button class="small" onclick="home()">🏠 Home</button><div class="cols"><div class="card"><div class="tabs"><button id="namesMode" class="active">Names</button><button id="numbersMode">Numbers</button></div><label>Items (one per line)</label><textarea id="items" rows="7"></textarea><button class="action" id="saveItems">💾 Save list</button><p>Your list is saved in this browser.</p></div><div class="card center"><div id="wheel" class="wheel">🎡</div><div id="result" class="result">Ready?</div><button class="action big" id="spin">SPIN!</button></div></div></section>
-<section id="alphabet" class="panel"><h2>🔤 Alphabet Practice</h2><button class="small" onclick="home()">🏠 Home</button><div class="tabs sub"><button class="active" data-a="listen">🔊 Listen & Click</button><button data-a="match">🔗 Match Big to Small</button><button data-a="trace">✏️ Trace the Letter</button><button data-a="write">📝 Listen & Write</button></div><div id="a-listen" class="practice"><h3>Listen and click the letter</h3><button class="action" id="aListen">🔊 Listen</button><div id="aChoices" class="choices"></div><p id="aFeed"></p></div><div id="a-match" class="practice hide"><h3>Match big to small</h3><div id="aMatch" class="match"></div><p id="amFeed"></p></div><div id="a-trace" class="practice hide"><h3>Trace the letter</h3><div id="traceChar" class="trace">A</div><canvas id="trace" width="500" height="220"></canvas><br><button class="action" id="clear">Clear</button><button class="action" id="newLetter">New letter</button></div><div id="a-write" class="practice hide"><h3>Listen and write</h3><button class="action" id="awListen">🔊 Listen</button><input id="awInput" maxlength="1" placeholder="Type the letter"><button class="action" id="awCheck">Check</button><p id="awFeed"></p></div></section>
-<section id="numbers" class="panel"><h2>🔢 Numbers Practice</h2><button class="small" onclick="home()">🏠 Home</button><div class="tabs sub"><button class="active" data-n="listen">🔊 Listen & Click</button><button data-n="match">🔗 Match Number to Word</button><button data-n="trace">✏️ Trace the Number</button><button data-n="count">🍎 Count & Click</button></div><div id="n-listen" class="practice"><h3>Listen and click the number</h3><button class="action" id="nListen">🔊 Listen</button><div id="nChoices" class="choices"></div><p id="nFeed"></p></div><div id="n-match" class="practice hide"><h3>Match number to the word</h3><div id="nMatch" class="match"></div></div><div id="n-trace" class="practice hide"><h3>Trace the number</h3><div id="traceNum" class="trace">1</div><canvas id="numCanvas" width="500" height="220"></canvas><br><button class="action" id="clearNum">Clear</button><button class="action" id="newNum">New number</button></div><div id="n-count" class="practice hide"><h3>Count and click</h3><div id="apples" class="apples"></div><div id="countChoices" class="choices"></div><p id="countFeed"></p></div></section>
-<section id="weather" class="panel"><h2>☀️ Weather Practice</h2><button class="small" onclick="home()">🏠 Home</button><div class="practice"><h3>Look at the weather today.</h3><p class="sentence">Today is <span id="weatherBlank">________</span> day.</p><div id="weatherChoices" class="weather"><button data-w="sunny">☀️ Sunny</button><button data-w="rainy">🌧️ Rainy</button><button data-w="cloudy">☁️ Cloudy</button><button data-w="windy">💨 Windy</button><button data-w="snowy">❄️ Snowy</button></div><div id="weatherTarget" class="drop">Drag a weather word here (or click one)</div><button class="action" id="weatherCheck">Check</button><p id="weatherFeed"></p></div></section>
-<section id="calendar" class="panel"><h2>📅 Calendar — Today</h2><button class="small" onclick="home()">🏠 Home</button><div class="calendar"><div>📅</div><small>TODAY IS</small><strong id="fullDate"></strong><div class="calgrid"><span>MONTH<b id="month"></b></span><span>DAY<b id="day"></b></span><span>DATE<b id="date"></b></span></div></div></section>
-<section id="songs" class="panel"><h2>🎵 Songs Storage</h2><button class="small" onclick="home()">🏠 Home</button><div class="cols"><div class="card"><h3>Add YouTube song</h3><input id="songTitle" placeholder="Song title"><input id="songUrl" placeholder="Paste YouTube link"><button class="action" id="addSong">➕ Add song</button><h3>Or upload audio</h3><input type="file" id="audio" accept="audio/*"><p>Saved in this browser.</p></div><div class="card"><h3>My songs</h3><div id="songList"></div></div></div></section>
-<section id="colors" class="panel"><h2>🎨 Colors Practice</h2><button class="small" onclick="home()">🏠 Home</button><div class="practice"><h3>Listen and click the correct color</h3><button class="action" id="colorListen">🔊 Listen</button><div id="colorChoices" class="colorchoices"></div><p id="colorFeed"></p></div></section>
-<section id="teacher" class="panel"><h2>👩‍🏫 Teacher Corner</h2><button class="small" onclick="home()">🏠 Home</button><div class="cols"><div class="card"><h3>Add a Canva / class link</h3><input id="classTitle" placeholder="Class or activity name"><input id="classUrl" placeholder="Paste Canva/class link"><button class="action" id="addClass">➕ Add link</button><p>Links are saved in this browser.</p></div><div class="card"><h3>My class links</h3><div id="classList"></div></div></div></section>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Class Activities</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="activities">
+
+<img src="activitypage.png" class="bg fixed" alt="Jungle classroom">
+
+<a href="index.html" class="homebtn">🏠 Home</a>
+
+<h1>ENGLISH CLASS</h1>
+<p class="subtitle">Choose an activity</p>
+
+<!-- =========================
+     ACTIVITY MENU
+========================= -->
+
+<div id="menu" class="menu">
+
+  <button data-p="spinner">
+    🎡
+    <b>Spinner</b>
+  </button>
+
+  <button data-p="alphabet">
+    🔤
+    <b>Alphabet</b>
+  </button>
+
+  <button data-p="numbers">
+    🔢
+    <b>Numbers</b>
+  </button>
+
+  <button data-p="weather">
+    ☀️
+    <b>Weather</b>
+  </button>
+
+  <button data-p="calendar">
+    📅
+    <b>Calendar</b>
+  </button>
+
+  <button data-p="songs">
+    🎵
+    <b>Songs</b>
+  </button>
+
+  <button data-p="colors">
+    🎨
+    <b>Colors</b>
+  </button>
+
+  <button data-p="teacher">
+    👩‍🏫
+    <b>Teacher Corner</b>
+  </button>
+
+</div>
+
+
+<!-- =========================
+     SPINNER
+========================= -->
+
+<section id="spinner" class="panel">
+
+  <h2>🎡 Name / Number Spinner</h2>
+
+  <button class="small" onclick="home()">🏠 Home</button>
+
+  <div class="cols">
+
+    <div class="card">
+
+      <div class="tabs">
+        <button id="namesMode" class="active">Names</button>
+        <button id="numbersMode">Numbers</button>
+      </div>
+
+      <label>Items (one per line)</label>
+
+      <textarea id="items" rows="7"></textarea>
+
+      <button class="action" id="saveItems">
+        💾 Save list
+      </button>
+
+      <p>Your list is saved in this browser.</p>
+
+    </div>
+
+
+    <div class="card center">
+
+      <div id="wheel" class="wheel">
+        🎡
+      </div>
+
+      <div id="result" class="result">
+        Ready?
+      </div>
+
+      <button class="action big" id="spin">
+        SPIN!
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     ALPHABET
+========================= -->
+
+<section id="alphabet" class="panel">
+
+  <h2>🔤 Alphabet Practice</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="tabs sub">
+
+    <button class="active" data-a="listen">
+      🔊 Listen & Click
+    </button>
+
+    <button data-a="match">
+      🔗 Match Big to Small
+    </button>
+
+    <button data-a="trace">
+      ✏️ Trace the Letter
+    </button>
+
+    <button data-a="write">
+      📝 Listen & Write
+    </button>
+
+  </div>
+
+
+  <div id="a-listen" class="practice">
+
+    <h3>Listen and click the letter</h3>
+
+    <button class="action" id="aListen">
+      🔊 Listen
+    </button>
+
+    <div id="aChoices" class="choices"></div>
+
+    <p id="aFeed"></p>
+
+  </div>
+
+
+  <div id="a-match" class="practice hide">
+
+    <h3>Match big to small</h3>
+
+    <div id="aMatch" class="match"></div>
+
+    <p id="amFeed"></p>
+
+  </div>
+
+
+  <div id="a-trace" class="practice hide">
+
+    <h3>Trace the letter</h3>
+
+    <div id="traceChar" class="trace">
+      A
+    </div>
+
+    <canvas id="trace" width="500" height="220"></canvas>
+
+    <br>
+
+    <button class="action" id="clear">
+      Clear
+    </button>
+
+    <button class="action" id="newLetter">
+      New letter
+    </button>
+
+  </div>
+
+
+  <div id="a-write" class="practice hide">
+
+    <h3>Listen and write</h3>
+
+    <button class="action" id="awListen">
+      🔊 Listen
+    </button>
+
+    <input
+      id="awInput"
+      maxlength="1"
+      placeholder="Type the letter"
+    >
+
+    <button class="action" id="awCheck">
+      Check
+    </button>
+
+    <p id="awFeed"></p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     NUMBERS
+========================= -->
+
+<section id="numbers" class="panel">
+
+  <h2>🔢 Numbers Practice</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="tabs sub">
+
+    <button class="active" data-n="listen">
+      🔊 Listen & Click
+    </button>
+
+    <button data-n="match">
+      🔗 Match Number to Word
+    </button>
+
+    <button data-n="trace">
+      ✏️ Trace the Number
+    </button>
+
+    <button data-n="count">
+      🍎 Count & Click
+    </button>
+
+  </div>
+
+
+  <div id="n-listen" class="practice">
+
+    <h3>Listen and click the number</h3>
+
+    <button class="action" id="nListen">
+      🔊 Listen
+    </button>
+
+    <div id="nChoices" class="choices"></div>
+
+    <p id="nFeed"></p>
+
+  </div>
+
+
+  <div id="n-match" class="practice hide">
+
+    <h3>Match number to the word</h3>
+
+    <div id="nMatch" class="match"></div>
+
+  </div>
+
+
+  <div id="n-trace" class="practice hide">
+
+    <h3>Trace the number</h3>
+
+    <div id="traceNum" class="trace">
+      1
+    </div>
+
+    <canvas
+      id="numCanvas"
+      width="500"
+      height="220">
+    </canvas>
+
+    <br>
+
+    <button class="action" id="clearNum">
+      Clear
+    </button>
+
+    <button class="action" id="newNum">
+      New number
+    </button>
+
+  </div>
+
+
+  <div id="n-count" class="practice hide">
+
+    <h3>Count and click</h3>
+
+    <div id="apples" class="apples"></div>
+
+    <div id="countChoices" class="choices"></div>
+
+    <p id="countFeed"></p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     WEATHER
+========================= -->
+
+<section id="weather" class="panel">
+
+  <h2>☀️ Weather Practice</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="practice">
+
+    <h3>Look at the weather today.</h3>
+
+    <p class="sentence">
+      Today is
+      <span id="weatherBlank">________</span>
+      day.
+    </p>
+
+    <div id="weatherChoices" class="weather">
+
+      <button data-w="sunny">
+        ☀️ Sunny
+      </button>
+
+      <button data-w="rainy">
+        🌧️ Rainy
+      </button>
+
+      <button data-w="cloudy">
+        ☁️ Cloudy
+      </button>
+
+      <button data-w="windy">
+        💨 Windy
+      </button>
+
+      <button data-w="snowy">
+        ❄️ Snowy
+      </button>
+
+    </div>
+
+    <div id="weatherTarget" class="drop">
+      Drag a weather word here (or click one)
+    </div>
+
+    <button class="action" id="weatherCheck">
+      Check
+    </button>
+
+    <p id="weatherFeed"></p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     CALENDAR
+========================= -->
+
+<section id="calendar" class="panel">
+
+  <h2>📅 Calendar — Today</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="calendar">
+
+    <div>📅</div>
+
+    <small>
+      TODAY IS
+    </small>
+
+    <strong id="fullDate"></strong>
+
+    <div class="calgrid">
+
+      <span>
+        MONTH
+        <b id="month"></b>
+      </span>
+
+      <span>
+        DAY
+        <b id="day"></b>
+      </span>
+
+      <span>
+        DATE
+        <b id="date"></b>
+      </span>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     SONGS
+========================= -->
+
+<section id="songs" class="panel">
+
+  <h2>🎵 Songs Storage</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="cols">
+
+    <div class="card">
+
+      <h3>Add YouTube song</h3>
+
+      <input
+        id="songTitle"
+        placeholder="Song title">
+
+      <input
+        id="songUrl"
+        placeholder="Paste YouTube link">
+
+      <button class="action" id="addSong">
+        ➕ Add song
+      </button>
+
+
+      <h3>
+        Or upload audio
+      </h3>
+
+      <input
+        type="file"
+        id="audio"
+        accept="audio/*">
+
+      <p>
+        Saved in this browser.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        My songs
+      </h3>
+
+      <div id="songList"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     COLORS
+========================= -->
+
+<section id="colors" class="panel">
+
+  <h2>🎨 Colors Practice</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="practice">
+
+    <h3>
+      Listen and click the correct color
+    </h3>
+
+    <button class="action" id="colorListen">
+      🔊 Listen
+    </button>
+
+    <div id="colorChoices" class="colorchoices"></div>
+
+    <p id="colorFeed"></p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     TEACHER CORNER
+========================= -->
+
+<section id="teacher" class="panel">
+
+  <h2>👩‍🏫 Teacher Corner</h2>
+
+  <button class="small" onclick="home()">
+    🏠 Home
+  </button>
+
+  <div class="cols">
+
+    <div class="card">
+
+      <h3>
+        Add a Canva / class link
+      </h3>
+
+      <input
+        id="classTitle"
+        placeholder="Class or activity name">
+
+      <input
+        id="classUrl"
+        placeholder="Paste Canva/class link">
+
+      <button class="action" id="addClass">
+        ➕ Add link
+      </button>
+
+      <p>
+        Links are saved in this browser.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        My class links
+      </h3>
+
+      <div id="classList"></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
-const $=id=>document.getElementById(id), menu=$('menu'), panels=[...document.querySelectorAll('.panel')];function home(){panels.forEach(p=>p.classList.remove('show'));menu.style.display='grid';scrollTo(0,0)}function openPanel(id){menu.style.display='none';panels.forEach(p=>p.classList.toggle('show',p.id===id));scrollTo(0,0)}document.querySelectorAll('.menu button').forEach(b=>b.onclick=()=>openPanel(b.dataset.p));
-const sound=()=>localStorage.getItem('sound')!=='off';function say(t){if(sound()&&speechSynthesis){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(t);u.rate=.82;u.pitch=1.08;speechSynthesis.speak(u)}}const rand=a=>a[Math.floor(Math.random()*a.length)];
-let mode='names', defaults=['Alice','Ben','Charlie','Diana'], nums=['1','2','3','4','5','6','7','8','9','10'];function loadItems(){let k=mode==='names'?'names':'numbers';$('items').value=(JSON.parse(localStorage.getItem(k)||'null')|| (mode==='names'?defaults:nums)).join('\n')}loadItems();$('namesMode').onclick=()=>{mode='names';$('namesMode').classList.add('active');$('numbersMode').classList.remove('active');loadItems()};$('numbersMode').onclick=()=>{mode='numbers';$('numbersMode').classList.add('active');$('namesMode').classList.remove('active');loadItems()};$('saveItems').onclick=()=>{localStorage.setItem(mode,JSON.stringify($('items').value.split(/[\n,]/).map(x=>x.trim()).filter(Boolean)));$('result').textContent='Saved!'};$('spin').onclick=()=>{let list=JSON.parse(localStorage.getItem(mode)||'null')|| (mode==='names'?defaults:nums);$('result').textContent='Spinning...';$('wheel').style.transform=`rotate(${720+Math.random()*720}deg)`;setTimeout(()=>{$('result').textContent=rand(list);say($('result').textContent)},1100)};
-function tabs(attr,prefix){document.querySelectorAll(`[data-${attr}]`).forEach(b=>b.onclick=()=>{document.querySelectorAll(`[data-${attr}]`).forEach(x=>x.classList.remove('active'));b.classList.add('active');['listen','match','trace','write','count'].forEach(x=>{let e=$(prefix+'-'+x);if(e)e.classList.add('hide')});let e=$(prefix+'-'+b.dataset[attr]);if(e)e.classList.remove('hide')})}tabs('a','a');tabs('n','n');
-const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');let at=rand(letters);function alpha(){at=rand(letters);$('aChoices').innerHTML=[...new Set([at,rand(letters),rand(letters),rand(letters)])].map(x=>`<button>${x}</button>`).join('');document.querySelectorAll('#aChoices button').forEach(b=>b.onclick=()=>{let ok=b.textContent===at;$('aFeed').textContent=ok?'⭐ Great job!':'Try again!';if(ok)say('Great job')})}alpha();$('aListen').onclick=()=>say('Letter '+at);$('awListen').onclick=()=>say('Letter '+at);$('awCheck').onclick=()=>{$('awFeed').textContent=$('awInput').value.toUpperCase()===at?'⭐ Correct!':'Try again!'};
-function amatch(){let x=[...letters].sort(()=>Math.random()-.5).slice(0,5);$('aMatch').innerHTML=x.map(l=>`<button><b>${l}</b><span>${l.toLowerCase()}</span></button>`).join('');document.querySelectorAll('#aMatch button').forEach(b=>b.onclick=()=>b.classList.toggle('matched'))}amatch();let tl=rand(letters);function newTrace(){tl=rand(letters);$('traceChar').textContent=tl;$('clear').click()}$('newLetter').onclick=newTrace;
-function canvas(id,clear){let c=$(id),x=c.getContext('2d'),down=false;c.onpointerdown=e=>{down=true;x.beginPath();x.moveTo(e.offsetX,e.offsetY)};c.onpointermove=e=>{if(!down)return;x.lineWidth=6;x.lineCap='round';x.strokeStyle='#5b3519';x.lineTo(e.offsetX,e.offsetY);x.stroke()};c.onpointerup=()=>down=false;c.onpointerleave=()=>down=false;$(clear).onclick=()=>x.clearRect(0,0,c.width,c.height)}canvas('trace','clear');canvas('numCanvas','clearNum');
-const nw=['one','two','three','four','five','six','seven','eight','nine','ten'];let nt=1;function nquestion(){nt=1+Math.floor(Math.random()*10);$('nChoices').innerHTML=[...new Set([nt,1+Math.floor(Math.random()*10),1+Math.floor(Math.random()*10),1+Math.floor(Math.random()*10)])].map(n=>`<button>${n}</button>`).join('');document.querySelectorAll('#nChoices button').forEach(b=>b.onclick=()=>{$('nFeed').textContent=+b.textContent===nt?'⭐ Excellent!':'Try again!'})}nquestion();$('nListen').onclick=()=>say(nw[nt-1]);function nmatch(){$('nMatch').innerHTML=[1,2,3,4,5].map(n=>`<button><b>${n}</b><span>${nw[n-1]}</span></button>`).join('');document.querySelectorAll('#nMatch button').forEach(b=>b.onclick=()=>b.classList.toggle('matched'))}nmatch();let tn=1;$('newNum').onclick=()=>{tn=1+Math.floor(Math.random()*10);$('traceNum').textContent=tn;$('clearNum').click()};function count(){let n=1+Math.floor(Math.random()*10);$('apples').textContent='🍎'.repeat(n);$('countChoices').innerHTML=[...new Set([n,1+Math.floor(Math.random()*10),1+Math.floor(Math.random()*10),1+Math.floor(Math.random()*10)])].map(x=>`<button>${x}</button>`).join('');document.querySelectorAll('#countChoices button').forEach(b=>b.onclick=()=>$('countFeed').textContent=+b.textContent===n?'⭐ Correct!':'Count again!')}count();
-let weather='';document.querySelectorAll('#weatherChoices button').forEach(b=>b.onclick=()=>{weather=b.dataset.w;$('weatherBlank').textContent=weather;$('weatherTarget').textContent=weather});$('weatherCheck').onclick=()=>{let expected=['sunny','rainy','cloudy','windy','snowy'][new Date().getDay()%5];$('weatherFeed').textContent=weather===expected?'⭐ Correct!':'Try again!';};
-let d=new Date();$('fullDate').textContent=d.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric',year:'numeric'});$('month').textContent=d.toLocaleDateString(undefined,{month:'long'});$('day').textContent=d.toLocaleDateString(undefined,{weekday:'long'});$('date').textContent=d.getDate();
-function yt(u){try{let x=new URL(u);if(x.hostname.includes('youtu.be'))return x.pathname.slice(1);return x.searchParams.get('v')||null}catch(e){return null}}function songs(){let l=JSON.parse(localStorage.getItem('songs')||'[]');$('songList').innerHTML=l.length?l.map((s,i)=>`<div class="saved"><b>${s.title}</b>${s.type==='yt'?`<iframe src="https://www.youtube.com/embed/${s.id}" allowfullscreen></iframe>`:`<audio controls src="${s.data}"></audio>`}<button onclick="delSong(${i})">Delete</button></div>`).join(''):'<p>No songs yet.</p>'}function delSong(i){let l=JSON.parse(localStorage.getItem('songs')||'[]');l.splice(i,1);localStorage.setItem('songs',JSON.stringify(l));songs()}$('addSong').onclick=()=>{let id=yt($('songUrl').value.trim());if(!id)return alert('Please paste a YouTube link.');let l=JSON.parse(localStorage.getItem('songs')||'[]');l.push({title:$('songTitle').value.trim()||'English Song',type:'yt',id});localStorage.setItem('songs',JSON.stringify(l));$('songTitle').value='';$('songUrl').value='';songs()};$('audio').onchange=()=>{let f=$('audio').files[0];if(!f||f.size>5e6)return alert('Please use audio under 5 MB.');let r=new FileReader();r.onload=()=>{let l=JSON.parse(localStorage.getItem('songs')||'[]');l.push({title:f.name,type:'audio',data:r.result});try{localStorage.setItem('songs',JSON.stringify(l));songs()}catch(e){alert('Browser storage is full.')}};r.readAsDataURL(f)};songs();
-const cols=[['red','#e85d5d'],['blue','#4d9fc0'],['yellow','#efc447'],['green','#62a45b'],['orange','#f28a45'],['purple','#9470b7'],['pink','#df8aa8'],['brown','#996747']];let ct=rand(cols);function colorQ(){ct=rand(cols);$('colorChoices').innerHTML=cols.map(c=>`<button style="background:${c[1]}">${c[0]}</button>`).join('');document.querySelectorAll('#colorChoices button').forEach(b=>b.onclick=()=>$('colorFeed').textContent=b.textContent===ct[0]?'⭐ Wonderful!':'Try again!')}colorQ();$('colorListen').onclick=()=>say(ct[0]);
-function classes(){let l=JSON.parse(localStorage.getItem('classes')||'[]');$('classList').innerHTML=l.length?l.map((x,i)=>`<div class="saved"><b>${x.title}</b><br><a href="${x.url}" target="_blank">🔗 Open class</a> <button onclick="delClass(${i})">Delete</button></div>`).join(''):'<p>No class links yet.</p>'}function delClass(i){let l=JSON.parse(localStorage.getItem('classes')||'[]');l.splice(i,1);localStorage.setItem('classes',JSON.stringify(l));classes()}$('addClass').onclick=()=>{let u=$('classUrl').value.trim();try{new URL(u)}catch(e){return alert('Please paste a valid link.')}let l=JSON.parse(localStorage.getItem('classes')||'[]');l.push({title:$('classTitle').value.trim()||'My class',url:u});localStorage.setItem('classes',JSON.stringify(l));$('classTitle').value='';$('classUrl').value='';classes()};classes();
-</script></body></html>
+
+const $ = id => document.getElementById(id);
+
+const menu = $('menu');
+
+const panels = [
+  ...document.querySelectorAll('.panel')
+];
+
+
+function home() {
+
+  panels.forEach(
+    p => p.classList.remove('show')
+  );
+
+  menu.style.display = 'grid';
+
+  scrollTo(0,0);
+}
+
+
+function openPanel(id) {
+
+  menu.style.display = 'none';
+
+  panels.forEach(
+    p => p.classList.toggle(
+      'show',
+      p.id === id
+    )
+  );
+
+  scrollTo(0,0);
+}
+
+
+document
+  .querySelectorAll('.menu button')
+  .forEach(
+    b => b.onclick = () =>
+      openPanel(b.dataset.p)
+  );
+
+
+/* =========================
+   SOUND
+========================= */
+
+const sound = () =>
+  localStorage.getItem('sound') !== 'off';
+
+
+function say(t) {
+
+  if (
+    sound() &&
+    speechSynthesis
+  ) {
+
+    speechSynthesis.cancel();
+
+    let u =
+      new SpeechSynthesisUtterance(t);
+
+    u.rate = .82;
+    u.pitch = 1.08;
+
+    speechSynthesis.speak(u);
+
+  }
+
+}
+
+
+const rand = a =>
+  a[Math.floor(Math.random() * a.length)];
+
+
+/* =========================
+   SPINNER
+========================= */
+
+let mode = 'names';
+
+let defaults = [
+  'Alice',
+  'Ben',
+  'Charlie',
+  'Diana'
+];
+
+let nums = [
+  '1','2','3','4','5',
+  '6','7','8','9','10'
+];
+
+
+function loadItems() {
+
+  let k =
+    mode === 'names'
+      ? 'names'
+      : 'numbers';
+
+  $('items').value =
+    (
+      JSON.parse(
+        localStorage.getItem(k) ||
+        'null'
+      ) ||
+      (
+        mode === 'names'
+          ? defaults
+          : nums
+      )
+    ).join('\n');
+
+}
+
+
+loadItems();
+
+
+$('namesMode').onclick = () => {
+
+  mode = 'names';
+
+  $('namesMode')
+    .classList.add('active');
+
+  $('numbersMode')
+    .classList.remove('active');
+
+  loadItems();
+
+};
+
+
+$('numbersMode').onclick = () => {
+
+  mode = 'numbers';
+
+  $('numbersMode')
+    .classList.add('active');
+
+  $('namesMode')
+    .classList.remove('active');
+
+  loadItems();
+
+};
+
+
+$('saveItems').onclick = () => {
+
+  localStorage.setItem(
+    mode,
+    JSON.stringify(
+      $('items')
+        .value
+        .split(/[\n,]/)
+        .map(x => x.trim())
+        .filter(Boolean)
+    )
+  );
+
+  $('result').textContent =
+    'Saved!';
+
+};
+
+
+$('spin').onclick = () => {
+
+  let list =
+    JSON.parse(
+      localStorage.getItem(mode) ||
+      'null'
+    ) ||
+    (
+      mode === 'names'
+        ? defaults
+        : nums
+    );
+
+  $('result').textContent =
+    'Spinning...';
+
+  $('wheel').style.transform =
+    `rotate(${720 + Math.random() * 720}deg)`;
+
+  setTimeout(() => {
+
+    $('result').textContent =
+      rand(list);
+
+    say(
+      $('result').textContent
+    );
+
+  },1100);
+
+};
+
+
+/* =========================
+   TABS
+========================= */
+
+function tabs(attr,prefix) {
+
+  document
+    .querySelectorAll(`[data-${attr}]`)
+    .forEach(b => {
+
+      b.onclick = () => {
+
+        document
+          .querySelectorAll(`[data-${attr}]`)
+          .forEach(
+            x =>
+              x.classList.remove('active')
+          );
+
+        b.classList.add('active');
+
+        [
+          'listen',
+          'match',
+          'trace',
+          'write',
+          'count'
+        ].forEach(x => {
+
+          let e =
+            $(prefix + '-' + x);
+
+          if(e)
+            e.classList.add('hide');
+
+        });
+
+        let e =
+          $(prefix + '-' + b.dataset[attr]);
+
+        if(e)
+          e.classList.remove('hide');
+
+      };
+
+    });
+
+}
+
+
+tabs('a','a');
+
+tabs('n','n');
+
+
+/* =========================
+   ALPHABET
+========================= */
+
+const letters =
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  .split('');
+
+let at = rand(letters);
+
+
+function alpha() {
+
+  at = rand(letters);
+
+  $('aChoices').innerHTML =
+    [
+      ...new Set([
+        at,
+        rand(letters),
+        rand(letters),
+        rand(letters)
+      ])
+    ]
+    .map(
+      x =>
+        `<button>${x}</button>`
+    )
+    .join('');
+
+  document
+    .querySelectorAll('#aChoices button')
+    .forEach(b => {
+
+      b.onclick = () => {
+
+        let ok =
+          b.textContent === at;
+
+        $('aFeed').textContent =
+          ok
+            ? '⭐ Great job!'
+            : 'Try again!';
+
+        if(ok)
+          say('Great job');
+
+      };
+
+    });
+
+}
+
+
+alpha();
+
+
+$('aListen').onclick =
+  () => say('Letter ' + at);
+
+
+$('awListen').onclick =
+  () => say('Letter ' + at);
+
+
+$('awCheck').onclick = () => {
+
+  $('awFeed').textContent =
+    $('awInput')
+      .value
+      .toUpperCase() === at
+        ? '⭐ Correct!'
+        : 'Try again!';
+
+};
+
+
+function amatch() {
+
+  let x =
+    [...letters]
+      .sort(() => Math.random() - .5)
+      .slice(0,5);
+
+  $('aMatch').innerHTML =
+    x
+      .map(
+        l =>
+          `<button>
+            <b>${l}</b>
+            <span>${l.toLowerCase()}</span>
+          </button>`
+      )
+      .join('');
+
+  document
+    .querySelectorAll('#aMatch button')
+    .forEach(b =>
+      b.onclick =
+        () =>
+          b.classList.toggle('matched')
+    );
+
+}
+
+
+amatch();
+
+
+let tl = rand(letters);
+
+
+function newTrace() {
+
+  tl = rand(letters);
+
+  $('traceChar').textContent = tl;
+
+  $('clear').click();
+
+}
+
+
+$('newLetter').onclick =
+  newTrace;
+
+
+/* =========================
+   DRAWING CANVAS
+========================= */
+
+function canvas(id,clear) {
+
+  let c = $(id);
+
+  let x = c.getContext('2d');
+
+  let down = false;
+
+
+  c.onpointerdown = e => {
+
+    down = true;
+
+    x.beginPath();
+
+    x.moveTo(
+      e.offsetX,
+      e.offsetY
+    );
+
+  };
+
+
+  c.onpointermove = e => {
+
+    if(!down)
+      return;
+
+    x.lineWidth = 6;
+
+    x.lineCap = 'round';
+
+    x.strokeStyle =
+      '#5b3519';
+
+    x.lineTo(
+      e.offsetX,
+      e.offsetY
+    );
+
+    x.stroke();
+
+  };
+
+
+  c.onpointerup =
+    () => down = false;
+
+
+  c.onpointerleave =
+    () => down = false;
+
+
+  $(clear).onclick =
+    () =>
+      x.clearRect(
+        0,
+        0,
+        c.width,
+        c.height
+      );
+
+}
+
+
+canvas(
+  'trace',
+  'clear'
+);
+
+canvas(
+  'numCanvas',
+  'clearNum'
+);
+
+
+/* =========================
+   NUMBERS
+========================= */
+
+const nw = [
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+  'ten'
+];
+
+let nt = 1;
+
+
+function nquestion() {
+
+  nt =
+    1 +
+    Math.floor(
+      Math.random() * 10
+    );
+
+  $('nChoices').innerHTML =
+    [
+      ...new Set([
+        nt,
+        1 + Math.floor(Math.random()*10),
+        1 + Math.floor(Math.random()*10),
+        1 + Math.floor(Math.random()*10)
+      ])
+    ]
+    .map(
+      n =>
+        `<button>${n}</button>`
+    )
+    .join('');
+
+
+  document
+    .querySelectorAll('#nChoices button')
+    .forEach(b => {
+
+      b.onclick = () => {
+
+        $('nFeed').textContent =
+          +b.textContent === nt
+            ? '⭐ Excellent!'
+            : 'Try again!';
+
+      };
+
+    });
+
+}
+
+
+nquestion();
+
+
+$('nListen').onclick =
+  () => say(nw[nt - 1]);
+
+
+function nmatch() {
+
+  $('nMatch').innerHTML =
+    [1,2,3,4,5]
+      .map(
+        n =>
+          `<button>
+            <b>${n}</b>
+            <span>${nw[n-1]}</span>
+          </button>`
+      )
+      .join('');
+
+
+  document
+    .querySelectorAll('#nMatch button')
+    .forEach(b =>
+      b.onclick =
+        () =>
+          b.classList.toggle('matched')
+    );
+
+}
+
+
+nmatch();
+
+
+let tn = 1;
+
+
+$('newNum').onclick = () => {
+
+  tn =
+    1 +
+    Math.floor(
+      Math.random() * 10
+    );
+
+  $('traceNum').textContent =
+    tn;
+
+  $('clearNum').click();
+
+};
+
+
+function count() {
+
+  let n =
+    1 +
+    Math.floor(
+      Math.random() * 10
+    );
+
+  $('apples').textContent =
+    '🍎'.repeat(n);
+
+
+  $('countChoices').innerHTML =
+    [
+      ...new Set([
+        n,
+        1 + Math.floor(Math.random()*10),
+        1 + Math.floor(Math.random()*10),
+        1 + Math.floor(Math.random()*10)
+      ])
+    ]
+    .map(
+      x =>
+        `<button>${x}</button>`
+    )
+    .join('');
+
+
+  document
+    .querySelectorAll('#countChoices button')
+    .forEach(b =>
+      b.onclick =
+        () =>
+          $('countFeed').textContent =
+            +b.textContent === n
+              ? '⭐ Correct!'
+              : 'Count again!'
+    );
+
+}
+
+
+count();
+
+
+/* =========================
+   WEATHER
+========================= */
+
+let weather = '';
+
+
+document
+  .querySelectorAll('#weatherChoices button')
+  .forEach(b => {
+
+    b.onclick = () => {
+
+      weather =
+        b.dataset.w;
+
+      $('weatherBlank')
+        .textContent =
+          weather;
+
+      $('weatherTarget')
+        .textContent =
+          weather;
+
+    };
+
+  });
+
+
+$('weatherCheck').onclick = () => {
+
+  let expected =
+    [
+      'sunny',
+      'rainy',
+      'cloudy',
+      'windy',
+      'snowy'
+    ][new Date().getDay() % 5];
+
+
+  $('weatherFeed').textContent =
+    weather === expected
+      ? '⭐ Correct!'
+      : 'Try again!';
+
+};
+
+
+/* =========================
+   CALENDAR
+========================= */
+
+let d = new Date();
+
+
+$('fullDate').textContent =
+  d.toLocaleDateString(
+    undefined,
+    {
+      weekday:'long',
+      month:'long',
+      day:'numeric',
+      year:'numeric'
+    }
+  );
+
+
+$('month').textContent =
+  d.toLocaleDateString(
+    undefined,
+    {
+      month:'long'
+    }
+  );
+
+
+$('day').textContent =
+  d.toLocaleDateString(
+    undefined,
+    {
+      weekday:'long'
+    }
+  );
+
+
+$('date').textContent =
+  d.getDate();
+
+
+/* =========================
+   SONGS
+========================= */
+
+function yt(u) {
+
+  try {
+
+    let x = new URL(u);
+
+    if(
+      x.hostname.includes(
+        'youtu.be'
+      )
+    )
+      return x.pathname.slice(1);
+
+    return x.searchParams.get('v');
+
+  } catch(e) {
+
+    return null;
+
+  }
+
+}
+
+
+function songs() {
+
+  let l =
+    JSON.parse(
+      localStorage.getItem('songs') ||
+      '[]'
+    );
+
+
+  $('songList').innerHTML =
+    l.length
+
+      ? l
+        .map(
+          (s,i) =>
+            `<div class="saved">
+              <b>${s.title}</b>
+              ${
+                s.type === 'yt'
+                ?
+                `<iframe
+                  src="https://www.youtube.com/embed/${s.id}"
+                  allowfullscreen>
+                </iframe>`
+                :
+                `<audio
+                  controls
+                  src="${s.data}">
+                </audio>`
+              }
+              <button
+                onclick="delSong(${i})">
+                Delete
+              </button>
+            </div>`
+        )
+        .join('')
+
+      :
+
+        '<p>No songs yet.</p>';
+
+}
+
+
+function delSong(i) {
+
+  let l =
+    JSON.parse(
+      localStorage.getItem('songs') ||
+      '[]'
+    );
+
+  l.splice(i,1);
+
+  localStorage.setItem(
+    'songs',
+    JSON.stringify(l)
+  );
+
+  songs();
+
+}
+
+
+$('addSong').onclick = () => {
+
+  let id =
+    yt(
+      $('songUrl')
+        .value
+        .trim()
+    );
+
+
+  if(!id)
+    return alert(
+      'Please paste a YouTube link.'
+    );
+
+
+  let l =
+    JSON.parse(
+      localStorage.getItem('songs') ||
+      '[]'
+    );
+
+
+  l.push({
+    title:
+      $('songTitle')
+        .value
+        .trim() ||
+      'English Song',
+
+    type:'yt',
+
+    id:id
+  });
+
+
+  localStorage.setItem(
+    'songs',
+    JSON.stringify(l)
+  );
+
+
+  $('songTitle').value = '';
+
+  $('songUrl').value = '';
+
+  songs();
+
+};
+
+
+$('audio').onchange = () => {
+
+  let f =
+    $('audio').files[0];
+
+
+  if(
+    !f ||
+    f.size > 5e6
+  )
+    return alert(
+      'Please use audio under 5 MB.'
+    );
+
+
+  let r =
+    new FileReader();
+
+
+  r.onload = () => {
+
+    let l =
+      JSON.parse(
+        localStorage.getItem('songs') ||
+        '[]'
+      );
+
+
+    l.push({
+      title:f.name,
+      type:'audio',
+      data:r.result
+    });
+
+
+    try {
+
+      localStorage.setItem(
+        'songs',
+        JSON.stringify(l)
+      );
+
+      songs();
+
+    } catch(e) {
+
+      alert(
+        'Browser storage is full.'
+      );
+
+    }
+
+  };
+
+
+  r.readAsDataURL(f);
+
+};
+
+
+songs();
+
+
+/* =========================
+   COLORS
+========================= */
+
+const cols = [
+
+  ['red','#e85d5d'],
+
+  ['blue','#4d9fc0'],
+
+  ['yellow','#efc447'],
+
+  ['green','#62a45b'],
+
+  ['orange','#f28a45'],
+
+  ['purple','#9470b7'],
+
+  ['pink','#df8aa8'],
+
+  ['brown','#996747']
+
+];
+
+
+let ct = rand(cols);
+
+
+function colorQ() {
+
+  ct = rand(cols);
+
+
+  $('colorChoices').innerHTML =
+    cols
+      .map(
+        c =>
+          `<button
+            style="background:${c[1]}">
+            ${c[0]}
+          </button>`
+      )
+      .join('');
+
+
+  document
+    .querySelectorAll('#colorChoices button')
+    .forEach(b => {
+
+      b.onclick = () =>
+        $('colorFeed').textContent =
+          b.textContent === ct[0]
+            ? '⭐ Wonderful!'
+            : 'Try again!';
+
+    });
+
+}
+
+
+colorQ();
+
+
+$('colorListen').onclick =
+  () => say(ct[0]);
+
+
+/* =========================
+   TEACHER CORNER
+========================= */
+
+function classes() {
+
+  let l =
+    JSON.parse(
+      localStorage.getItem('classes') ||
+      '[]'
+    );
+
+
+  $('classList').innerHTML =
+    l.length
+
+      ?
+
+      l
+        .map(
+          (x,i) =>
+            `<div class="saved">
+              <b>${x.title}</b>
+              <br>
+              <a
+                href="${x.url}"
+                target="_blank">
+                🔗 Open class
+              </a>
+
+              <button
+                onclick="delClass(${i})">
+                Delete
+              </button>
+            </div>`
+        )
+        .join('')
+
+      :
+
+        '<p>No class links yet.</p>';
+
+}
+
+
+function delClass(i) {
+
+  let l =
+    JSON.parse(
+      localStorage.getItem('classes') ||
+      '[]'
+    );
+
+
+  l.splice(i,1);
+
+
+  localStorage.setItem(
+    'classes',
+    JSON.stringify(l)
+  );
+
+
+  classes();
+
+}
+
+
+$('addClass').onclick = () => {
+
+  let u =
+    $('classUrl')
+      .value
+      .trim();
+
+
+  try {
+
+    new URL(u);
+
+  } catch(e) {
+
+    return alert(
+      'Please paste a valid link.'
+    );
+
+  }
+
+
+  let l =
+    JSON.parse(
+      localStorage.getItem('classes') ||
+      '[]'
+    );
+
+
+  l.push({
+
+    title:
+      $('classTitle')
+        .value
+        .trim() ||
+      'My class',
+
+    url:u
+
+  });
+
+
+  localStorage.setItem(
+    'classes',
+    JSON.stringify(l)
+  );
+
+
+  $('classTitle').value = '';
+
+  $('classUrl').value = '';
+
+  classes();
+
+}
+
+
+classes();
+
+</script>
+
+</body>
+</html>
