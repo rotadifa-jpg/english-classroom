@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Class</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="home-page">
+<img class="home-bg" src="homepage.png" alt="English Class">
+<button id="soundBtn" class="sound">🔊 Sound ON</button>
+<a class="start-btn" href="activity.html">⭐ START ⭐</a>
+<script>
+let soundOn=localStorage.getItem('soundOn')!=='false';
+const b=document.getElementById('soundBtn');
+function update(){b.textContent=soundOn?'🔊 Sound ON':'🔇 Sound OFF';b.classList.toggle('off',!soundOn)}
+b.onclick=()=>{soundOn=!soundOn;localStorage.setItem('soundOn',soundOn);update();if(soundOn&&'speechSynthesis'in window){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance("Welcome to Teacher Rodylyn's English class!"));}};
+update();
+</script>
+</body>
+</html>
