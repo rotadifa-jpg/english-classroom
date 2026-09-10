@@ -1,1 +1,955 @@
-```css @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&display=swap');*{box-sizing:border-box}body{margin:0;font-family:Nunito,sans-serif;color:#573719;background:#e7f1d8}.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.home{height:100vh;overflow:hidden;position:relative}.sound{position:absolute;z-index:3;right:3%;top:3%;padding:10px 16px;border:4px solid white;border-radius:16px;background:#4e9654;color:#fff;font-weight:800;box-shadow:0 5px #315f35;cursor:pointer}.sound.off{background:#68716a}.learn{position:absolute;z-index:2;left:50%;bottom:16%;transform:translateX(-50%);padding:14px 30px;border:5px solid #fff;border-radius:24px;background:#f26b32;color:#fff;text-decoration:none;font:800 clamp(1rem,2vw,1.6rem) 'Baloo 2';white-space:nowrap;box-shadow:0 7px #a74620,0 12px 25px #54351d55}.learn:hover{transform:translateX(-50%) translateY(-5px)}.activities{min-height:100vh;position:relative;padding:105px 5% 60px;text-align:center}.fixed{position:fixed;z-index:-1}.activities h1{margin:0;color:#fff2a6;font:800 clamp(2rem,4vw,3.5rem) 'Baloo 2';text-shadow:0 5px #6b3e18}.subtitle{margin:0 0 25px;color:white;font-weight:800;text-shadow:0 2px #5b3519}.homebtn{position:absolute;z-index:4;left:3%;top:25px;padding:9px 15px;background:#4e9654;color:#fff;border:3px solid #fff;border-radius:15px;text-decoration:none;font:800 1rem 'Baloo 2';box-shadow:0 4px #315f35}.menu{width:min(920px,95%);margin:auto;display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.menu button{min-height:115px;border:4px solid #fff;border-radius:22px;color:#fff;cursor:pointer;font:2rem 'Baloo 2';box-shadow:0 6px #4a2d1590;transition:.15s}.menu button:hover{transform:translateY(-5px)}.menu button b{display:block;font-size:1rem;line-height:1.05}.menu button:nth-child(1){background:#f26b32}.menu button:nth-child(2){background:#e5b83e}.menu button:nth-child(3){background:#4f9958}.menu button:nth-child(4){background:#3e8eaf}.menu button:nth-child(5){background:#8968a8}.menu button:nth-child(6){background:#d66e8d}.menu button:nth-child(7){background:#378f8c}.menu button:nth-child(8){background:#9a6746}.panel{display:none;width:min(1050px,94%);margin:0 auto;padding:23px;background:#fff9e9f5;border:5px solid #9d5d20;border-radius:28px;box-shadow:0 8px #693b18}.panel.show{display:block}.panel h2{margin:0 0 5px;color:#5a3419;font:800 clamp(1.8rem,4vw,2.8rem) 'Baloo 2'}.small,.action,.tabs button{border:0;border-radius:12px;padding:8px 13px;background:#4e9654;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 3px #315f35;margin:4px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:15px}.card,.practice,.calendar{margin-top:12px;background:#fffdf4;border:3px solid #d39a3b;border-radius:20px;padding:18px}.center{text-align:center}.tabs{display:flex;gap:5px;flex-wrap:wrap;justify-content:center}.tabs button.active{background:#f26b32}.tabs.sub{margin:10px 0}.card input,.card textarea,.practice input{width:100%;padding:10px;border:3px solid #d2a25b;border-radius:11px;margin:5px 0}.wheel{width:190px;height:190px;margin:10px auto;border-radius:50%;display:grid;place-items:center;font-size:60px;background:conic-gradient(#f26b32 0 45deg,#f5c84b 45deg 90deg,#63a65c 90deg 135deg,#4d9fc0 135deg 180deg,#e58ca9 180deg 225deg,#9a72bb 225deg 270deg,#f28a45 270deg 315deg,#378f8c 315deg);border:8px solid white;box-shadow:0 8px 20px #754b22;transition:transform 1.2s cubic-bezier(.17,.67,.18,1)}.result{font:800 2rem 'Baloo 2';min-height:42px}.big{font-size:1.2rem;background:#f26b32}.choices,.match,.colorchoices{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px auto;max-width:700px}.choices button,.match button{padding:15px;border:3px solid #d39a3b;border-radius:14px;background:#fff;font:800 1.6rem 'Baloo 2';cursor:pointer}.match{grid-template-columns:repeat(5,1fr)}.match button span{display:block;font-size:1rem}.match button.matched{background:#c9eacb}.hide{display:none!important}.trace{font:800 5rem 'Baloo 2';color:#e2bd70}.practice canvas{max-width:100%;background:#fff;border:3px dashed #d39a3b;border-radius:12px;touch-action:none}.sentence{font:800 1.8rem 'Baloo 2'}.weather{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}.weather button{padding:12px;border:3px solid #7caf62;border-radius:13px;background:#e4f2d7;font-weight:800;cursor:pointer}.drop{margin:15px auto;padding:22px;border:4px dashed #d39a3b;border-radius:16px;max-width:600px;background:white}.calendar{text-align:center}.calendar>div:first-child{font-size:4rem}.calendar small{font-weight:900;letter-spacing:.15em}.calendar>strong{display:block;font:800 2.2rem 'Baloo 2';margin:5px}.calgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.calgrid span{background:#e7f1d7;padding:12px;font-weight:900}.calgrid b{display:block;font:800 1.2rem 'Baloo 2'}.saved{padding:10px;margin:7px 0;background:#f1ead8;border-radius:12px}.saved iframe{width:100%;aspect-ratio:16/9;border:0;margin-top:7px}.saved audio{width:100%;margin-top:7px}.saved button,.saved a{margin-top:6px;padding:5px 9px;border:0;border-radius:8px;background:#9a6746;color:#fff;text-decoration:none;font-weight:800;cursor:pointer}.colorchoices button{min-height:70px;border:4px solid #fff;border-radius:15px;color:#fff;text-shadow:0 2px 3px #444;font-weight:900;cursor:pointer}@media(max-width:760px){.learn{white-space:normal;text-align:center;max-width:90%}.menu{grid-template-columns:repeat(2,1fr)}.menu button{min-height:100px}.cols{grid-template-columns:1fr}.match{grid-template-columns:repeat(2,1fr)}.choices,.colorchoices{grid-template-columns:repeat(2,1fr)}.activities{padding-top:90px}.panel{padding:13px}.wheel{width:160px;height:160px}.calgrid{grid-template-columns:1fr}} ```
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Nunito, sans-serif;
+  color: #573719;
+  background: #e7f1d8;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fixed {
+  position: fixed;
+  z-index: -1;
+}
+
+/* =========================
+   HOME PAGE
+========================= */
+
+.home {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.sound {
+  position: absolute;
+  z-index: 3;
+  right: 3%;
+  top: 3%;
+  padding: 10px 16px;
+  border: 4px solid white;
+  border-radius: 16px;
+  background: #4e9654;
+  color: white;
+  font-weight: 800;
+  box-shadow: 0 5px #315f35;
+  cursor: pointer;
+}
+
+.sound.off {
+  background: #68716a;
+}
+
+.learn {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 12%;
+  transform: translateX(-50%);
+  padding: 15px 42px;
+  border: 5px solid white;
+  border-radius: 28px;
+  background: #f26b32;
+  color: white;
+  text-decoration: none;
+  font: 800 clamp(1.2rem, 2.4vw, 1.8rem) 'Baloo 2', sans-serif;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  box-shadow:
+    0 7px #a74620,
+    0 12px 25px #54351d55;
+  transition: .18s ease;
+}
+
+.learn:hover {
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* =========================
+   ACTIVITY PAGE
+========================= */
+
+.activities {
+  min-height: 100vh;
+  position: relative;
+  padding: 95px 4% 55px;
+  text-align: center;
+}
+
+/* =========================
+   HOME BUTTON
+========================= */
+
+.homebtn {
+  position: absolute;
+  z-index: 5;
+  left: 3%;
+  top: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 20px;
+
+  background: #4e9654;
+  color: white;
+
+  border: 4px solid white;
+  border-radius: 18px;
+
+  text-decoration: none;
+
+  font: 800 1.05rem 'Baloo 2', sans-serif;
+
+  box-shadow:
+    0 5px #315f35,
+    0 8px 15px #38211255;
+
+  transition: .18s ease;
+}
+
+.homebtn:hover {
+  transform: translateY(-3px);
+}
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.activities h1 {
+  margin: 0;
+
+  color: #fff2a6;
+
+  font:
+    800 clamp(2.6rem, 5vw, 4.4rem)
+    'Baloo 2',
+    sans-serif;
+
+  letter-spacing: .03em;
+
+  text-shadow:
+    0 5px #6b3e18,
+    0 8px 12px #3c241255;
+}
+
+.subtitle {
+  margin: -2px 0 28px;
+
+  color: white;
+
+  font:
+    800 clamp(1rem, 2vw, 1.35rem)
+    Nunito,
+    sans-serif;
+
+  text-shadow: 0 3px #5b3519;
+}
+
+/* =========================
+   MAIN ACTIVITY MENU
+========================= */
+
+.menu {
+  width: min(1380px, 94%);
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(210px, 1fr));
+
+  gap: 24px;
+
+  padding: 4px 0 10px;
+}
+
+/* =========================
+   ACTIVITY BUTTONS
+========================= */
+
+.menu button {
+  position: relative;
+
+  min-height: 175px;
+
+  border: 5px solid white;
+  border-radius: 30px;
+
+  color: white;
+
+  cursor: pointer;
+
+  font:
+    3.6rem 'Baloo 2',
+    sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding: 20px 15px;
+
+  box-shadow:
+    0 8px #4a2d1590,
+    0 14px 25px #38211244;
+
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    filter .18s ease;
+
+  overflow: hidden;
+}
+
+/* glossy highlight */
+
+.menu button::before {
+  content: "";
+  position: absolute;
+
+  top: 10px;
+  left: 13px;
+
+  width: 45%;
+  height: 25px;
+
+  border-radius: 30px;
+
+  background: rgba(255,255,255,.20);
+
+  transform: rotate(-3deg);
+
+  pointer-events: none;
+}
+
+/* little decorative shine */
+
+.menu button::after {
+  content: "✦";
+
+  position: absolute;
+
+  top: 18px;
+  right: 22px;
+
+  color: rgba(255,255,255,.75);
+
+  font-size: 1.2rem;
+
+  pointer-events: none;
+}
+
+.menu button:hover {
+  transform: translateY(-8px) scale(1.02);
+
+  box-shadow:
+    0 12px #4a2d1590,
+    0 20px 30px #38211255;
+
+  filter: brightness(1.05);
+}
+
+.menu button:active {
+  transform: translateY(-2px) scale(.99);
+
+  box-shadow:
+    0 5px #4a2d1590,
+    0 9px 15px #38211244;
+}
+
+/* =========================
+   ICON
+========================= */
+
+.menu button {
+  line-height: 1;
+}
+
+.menu button b {
+  display: block;
+
+  margin-top: 5px;
+
+  font:
+    800 clamp(1.35rem, 2vw, 1.8rem)
+    'Baloo 2',
+    sans-serif;
+
+  line-height: 1;
+
+  letter-spacing: .02em;
+
+  text-shadow:
+    0 3px #00000030;
+}
+
+/* =========================
+   BUTTON COLORS
+========================= */
+
+.menu button:nth-child(1) {
+  background: linear-gradient(
+    145deg,
+    #ff7043,
+    #ef5428
+  );
+}
+
+.menu button:nth-child(2) {
+  background: linear-gradient(
+    145deg,
+    #ffd34f,
+    #e6ad27
+  );
+}
+
+.menu button:nth-child(3) {
+  background: linear-gradient(
+    145deg,
+    #62b968,
+    #489b55
+  );
+}
+
+.menu button:nth-child(4) {
+  background: linear-gradient(
+    145deg,
+    #51a8ca,
+    #348caf
+  );
+}
+
+.menu button:nth-child(5) {
+  background: linear-gradient(
+    145deg,
+    #9b79c0,
+    #825fa7
+  );
+}
+
+.menu button:nth-child(6) {
+  background: linear-gradient(
+    145deg,
+    #e6789a,
+    #d45d83
+  );
+}
+
+.menu button:nth-child(7) {
+  background: linear-gradient(
+    145deg,
+    #42aaa5,
+    #31938f
+  );
+}
+
+.menu button:nth-child(8) {
+  background: linear-gradient(
+    145deg,
+    #b57b55,
+    #95613f
+  );
+}
+
+/* =========================
+   ACTIVITY PANELS
+========================= */
+
+.panel {
+  display: none;
+
+  width: min(1100px, 94%);
+
+  margin: 28px auto 0;
+
+  padding: 25px;
+
+  background: #fff9e9f5;
+
+  border: 5px solid #9d5d20;
+  border-radius: 28px;
+
+  box-shadow:
+    0 8px #693b18,
+    0 15px 30px #3a211555;
+}
+
+.panel.show {
+  display: block;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+
+  color: #5a3419;
+
+  font:
+    800 clamp(2rem, 4vw, 3rem)
+    'Baloo 2',
+    sans-serif;
+}
+
+/* =========================
+   SMALL BUTTONS
+========================= */
+
+.small,
+.action,
+.tabs button {
+  border: 0;
+  border-radius: 13px;
+
+  padding: 9px 15px;
+
+  background: #4e9654;
+  color: white;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px #315f35;
+
+  margin: 4px;
+
+  transition: .15s ease;
+}
+
+.small:hover,
+.action:hover,
+.tabs button:hover {
+  transform: translateY(-2px);
+}
+
+.tabs button.active {
+  background: #f26b32;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.card,
+.practice,
+.calendar {
+  margin-top: 14px;
+
+  background: #fffdf4;
+
+  border: 3px solid #d39a3b;
+  border-radius: 20px;
+
+  padding: 20px;
+
+  box-shadow: 0 5px 12px #754b2222;
+}
+
+.center {
+  text-align: center;
+}
+
+.tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tabs.sub {
+  margin: 12px 0;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.card input,
+.card textarea,
+.practice input {
+  width: 100%;
+
+  padding: 11px;
+
+  border: 3px solid #d2a25b;
+
+  border-radius: 11px;
+
+  margin: 5px 0;
+
+  font-family: Nunito, sans-serif;
+}
+
+/* =========================
+   SPINNER
+========================= */
+
+.wheel {
+  width: 210px;
+  height: 210px;
+
+  margin: 12px auto;
+
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 65px;
+
+  background:
+    conic-gradient(
+      #f26b32 0 45deg,
+      #f5c84b 45deg 90deg,
+      #63a65c 90deg 135deg,
+      #4d9fc0 135deg 180deg,
+      #e58ca9 180deg 225deg,
+      #9a72bb 225deg 270deg,
+      #f28a45 270deg 315deg,
+      #378f8c 315deg
+    );
+
+  border: 9px solid white;
+
+  box-shadow:
+    0 8px 20px #754b22;
+
+  transition:
+    transform 1.2s cubic-bezier(.17,.67,.18,1);
+}
+
+.result {
+  font:
+    800 2.2rem 'Baloo 2',
+    sans-serif;
+
+  min-height: 45px;
+}
+
+.big {
+  font-size: 1.25rem;
+  background: #f26b32;
+}
+
+/* =========================
+   PRACTICE CHOICES
+========================= */
+
+.choices,
+.match,
+.colorchoices {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 10px;
+
+  margin: 15px auto;
+
+  max-width: 750px;
+}
+
+.choices button,
+.match button {
+  padding: 16px;
+
+  border: 3px solid #d39a3b;
+
+  border-radius: 14px;
+
+  background: white;
+
+  font:
+    800 1.6rem 'Baloo 2',
+    sans-serif;
+
+  cursor: pointer;
+
+  transition: .15s ease;
+}
+
+.choices button:hover,
+.match button:hover {
+  transform: translateY(-3px);
+  background: #fff4cf;
+}
+
+.match {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.match button span {
+  display: block;
+  font-size: 1rem;
+}
+
+.match button.matched {
+  background: #c9eacb;
+}
+
+/* =========================
+   TRACE
+========================= */
+
+.trace {
+  font:
+    800 5rem 'Baloo 2',
+    sans-serif;
+
+  color: #e2bd70;
+}
+
+.practice canvas {
+  max-width: 100%;
+
+  background: white;
+
+  border: 3px dashed #d39a3b;
+
+  border-radius: 12px;
+
+  touch-action: none;
+}
+
+/* =========================
+   WEATHER
+========================= */
+
+.sentence {
+  font:
+    800 1.8rem 'Baloo 2',
+    sans-serif;
+}
+
+.weather {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.weather button {
+  padding: 12px;
+
+  border: 3px solid #7caf62;
+
+  border-radius: 13px;
+
+  background: #e4f2d7;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.drop {
+  margin: 15px auto;
+
+  padding: 22px;
+
+  border: 4px dashed #d39a3b;
+
+  border-radius: 16px;
+
+  max-width: 600px;
+
+  background: white;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar {
+  text-align: center;
+}
+
+.calendar > div:first-child {
+  font-size: 4rem;
+}
+
+.calendar small {
+  font-weight: 900;
+  letter-spacing: .15em;
+}
+
+.calendar > strong {
+  display: block;
+
+  font:
+    800 2.2rem 'Baloo 2',
+    sans-serif;
+
+  margin: 5px;
+}
+
+.calgrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 8px;
+}
+
+.calgrid span {
+  background: #e7f1d7;
+
+  padding: 12px;
+
+  font-weight: 900;
+}
+
+.calgrid b {
+  display: block;
+
+  font:
+    800 1.2rem 'Baloo 2',
+    sans-serif;
+}
+
+/* =========================
+   SONGS / LINKS
+========================= */
+
+.saved {
+  padding: 10px;
+  margin: 7px 0;
+
+  background: #f1ead8;
+
+  border-radius: 12px;
+}
+
+.saved iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  margin-top: 7px;
+}
+
+.saved audio {
+  width: 100%;
+  margin-top: 7px;
+}
+
+.saved button,
+.saved a {
+  margin-top: 6px;
+
+  padding: 5px 9px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: #9a6746;
+
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+/* =========================
+   COLORS
+========================= */
+
+.colorchoices button {
+  min-height: 70px;
+
+  border: 4px solid white;
+
+  border-radius: 15px;
+
+  color: white;
+
+  text-shadow: 0 2px 3px #444;
+
+  font-weight: 900;
+
+  cursor: pointer;
+}
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hide {
+  display: none !important;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+  .menu {
+    width: min(900px, 94%);
+
+    grid-template-columns:
+      repeat(4, 1fr);
+
+    gap: 15px;
+  }
+
+  .menu button {
+    min-height: 145px;
+  }
+
+  .menu button b {
+    font-size: 1.2rem;
+  }
+
+  .menu button {
+    font-size: 3rem;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+  .activities {
+    padding:
+      85px
+      15px
+      40px;
+  }
+
+  .homebtn {
+    left: 15px;
+    top: 15px;
+
+    padding: 8px 14px;
+
+    font-size: .95rem;
+  }
+
+  .activities h1 {
+    font-size: 2.6rem;
+  }
+
+  .subtitle {
+    margin-bottom: 18px;
+  }
+
+  .menu {
+    width: 100%;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 13px;
+  }
+
+  .menu button {
+    min-height: 135px;
+
+    border-width: 4px;
+    border-radius: 24px;
+
+    font-size: 2.8rem;
+  }
+
+  .menu button b {
+    font-size: 1.15rem;
+  }
+
+  .cols {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    width: 100%;
+    padding: 14px;
+  }
+
+  .panel h2 {
+    font-size: 2rem;
+  }
+
+  .match {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .choices,
+  .colorchoices {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .wheel {
+    width: 170px;
+    height: 170px;
+  }
+
+  .calgrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 430px) {
+
+  .menu {
+    gap: 10px;
+  }
+
+  .menu button {
+    min-height: 120px;
+
+    border-radius: 20px;
+
+    font-size: 2.3rem;
+  }
+
+  .menu button b {
+    font-size: 1rem;
+  }
+
+  .activities h1 {
+    font-size: 2.2rem;
+  }
+}
