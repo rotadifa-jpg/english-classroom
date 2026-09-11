@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Fredoka:wght@500;600;700&display=swap');
+:root{
+  --orange:#f26b2e; --gold:#ffd35a; --brown:#5a351d; --green:#2d8b49;
+  --cream:#fff7dc; --panel:rgba(255,249,225,.96);
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"Baloo 2",system-ui,sans-serif;color:var(--brown)}
+body{background:#58c8c7}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+.page{min-height:100vh;position:relative;overflow:hidden}
+.jungle-bg{background:url("../assets/images/activitypage.png") center/cover fixed no-repeat}
+.home-bg{background:url("../assets/images/homepage.png") center/cover fixed no-repeat}
+.music-toggle,.home-btn,.back-btn{
+ position:fixed;z-index:50;top:18px;border:4px solid #6a3c1d;border-radius:18px;
+ background:#fff5cc;color:#5b351e;font-weight:800;padding:9px 16px;box-shadow:0 5px 0 #6a3c1d;
+}
+.music-toggle{right:18px}.home-btn{left:18px}.back-btn{left:115px}
+.music-toggle:active,.home-btn:active,.back-btn:active,.cta:active,.tile:active,.choice:active{transform:translateY(3px);box-shadow:0 2px 0 #6a3c1d}
+.cta{
+ display:inline-block;border:5px solid #6b351c;border-radius:28px;background:var(--orange);color:white;
+ font-family:"Fredoka";font-weight:700;font-size:clamp(24px,3vw,42px);padding:10px 44px;
+ box-shadow:0 8px 0 #6b351c;text-decoration:none
+}
+.home-actions{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);text-align:center}
+.home-actions .cta{min-width:220px}
+.board-content{position:absolute;left:9%;right:9%;top:16%;bottom:12%;display:flex;flex-direction:column;align-items:center}
+.board-title{font-family:Fredoka;font-weight:800;color:#ffd75a;text-shadow:0 5px 0 #6b351c,3px 0 0 #6b351c,-3px 0 0 #6b351c;text-align:center;font-size:clamp(44px,6vw,88px);line-height:.9;margin:0 0 10px}
+.board-subtitle{font-size:clamp(22px,3vw,38px);font-weight:800;color:#fff7dc;text-shadow:0 3px 0 #6b351c;margin:0 0 22px}
+.grade-grid{display:grid;grid-template-columns:repeat(2,minmax(220px,360px));gap:28px;width:min(800px,92%);margin:auto}
+.grade-card,.tile{
+ border:5px solid #63361b;border-radius:28px;background:linear-gradient(#ffcf57,#f09b24);
+ color:#fff;font-family:Fredoka;font-weight:800;text-shadow:0 3px 0 #6b351c;
+ box-shadow:0 9px 0 #63361b, inset 0 5px 0 rgba(255,255,255,.4);transition:.12s
+}
+.grade-card{padding:26px;font-size:clamp(30px,4vw,50px)}
+.activity-wrap{min-height:100vh;padding:95px 5% 40px;position:relative}
+.wood-panel{
+ max-width:1180px;margin:auto;background:rgba(239,177,59,.93);border:7px solid #6a351a;border-radius:36px;
+ padding:30px;box-shadow:0 12px 0 #6a351a, inset 0 8px 0 rgba(255,255,255,.2)
+}
+.wood-panel h1{font:800 clamp(38px,5vw,70px) Fredoka;margin:0;text-align:center;color:#ffe16b;text-shadow:0 4px 0 #6a351a}
+.wood-panel p.lead{text-align:center;color:#fff8dc;font-size:22px;font-weight:700;margin:4px 0 22px}
+.tile-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.tile{padding:18px 10px;min-height:140px;font-size:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px}
+.tile .icon{font-size:46px;line-height:1}
+.activity-card{max-width:1180px;margin:95px auto 30px;padding:22px}
+.card-title{font:800 42px Fredoka;color:#ffe16b;text-shadow:0 4px #6a351a;text-align:center;margin:0}
+.panel{background:var(--panel);border:5px solid #6a351a;border-radius:25px;padding:22px;box-shadow:0 8px 0 #6a351a}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0}
+input,textarea,select{border:3px solid #6a351a;border-radius:14px;padding:10px;background:#fffdf0;color:#4a2b19}
+textarea{width:100%;min-height:110px}
+.small-btn,.choice{
+ border:3px solid #6a351a;border-radius:16px;background:#ffd35a;color:#573118;font-weight:800;padding:9px 15px;
+ box-shadow:0 4px 0 #6a351a
+}
+.choice{font-size:24px}
+.status{text-align:center;font-size:25px;font-weight:800;min-height:38px;margin:12px}
+.success{color:#1c873f}.try{color:#d35c28}
+.speaker{border:3px solid #6a351a;border-radius:50%;background:#fff;padding:8px 11px;font-size:20px;box-shadow:0 4px 0 #6a351a}
+.number-grid,.letter-grid,.color-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:10px}
+.number-btn{padding:18px 8px;border:4px solid #6a351a;border-radius:18px;background:#fff;color:#5a351d;font:800 30px Fredoka;box-shadow:0 5px #6a351a}
+.number-cell{display:flex;gap:6px;align-items:center;justify-content:center}
+.wheel-box{display:flex;gap:30px;align-items:center;justify-content:center;flex-wrap:wrap}
+#wheel{border:10px solid #6a351a;border-radius:50%;background:#fff;max-width:70vw;width:540px;height:540px;box-shadow:0 12px 0 #6a351a}
+.pointer{font-size:52px;transform:rotate(90deg);margin-left:-30px}
+.fish-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.fish{border:0;background:transparent;font-size:48px;position:relative;min-height:80px}
+.fish span{position:absolute;inset:20px 0 0;font:800 22px Fredoka;color:#fff;text-shadow:0 2px 2px #000}
+.sequence{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:25px}
+.egg-slot,.egg-letter{width:78px;height:95px;border-radius:50% 50% 48% 48%;display:flex;align-items:center;justify-content:center;font:800 34px Fredoka;border:4px solid #6a351a}
+.egg-slot{background:#fff9db;border-style:dashed}.egg-letter{background:#ffd45b;box-shadow:0 5px #6a351a;cursor:grab}
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.weather-card{padding:25px;border:4px solid #6a351a;border-radius:22px;background:#fff9db;font:800 26px Fredoka}
+.calendar-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.drop{min-height:90px;border:4px dashed #6a351a;border-radius:18px;background:#fff9db;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800}.tray{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:15px}
+.song-list,.link-list{display:grid;gap:12px}.saved-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px;border:3px solid #6a351a;border-radius:16px;background:#fffdf0}
+canvas.whiteboard{width:100%;height:60vh;background:#fff;border:5px solid #6a351a;border-radius:20px;touch-action:none}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.memory-card{height:145px;border:4px solid #6a351a;border-radius:20px;background:linear-gradient(#ffd45b,#f39d27);font:800 38px Fredoka;color:transparent;box-shadow:0 6px #6a351a}.memory-card.open,.memory-card.matched{background:#fff;color:#5a351d}
+.trace-area{text-align:center}.trace-letter{font:800 220px Fredoka;color:#e8d9a8;-webkit-text-stroke:4px #8b6a3b;user-select:none}
+.trace-canvas{width:100%;max-width:800px;height:300px;border:5px dashed #6a351a;background:#fff9df;border-radius:20px;touch-action:none}
+@media(max-width:900px){.tile-grid{grid-template-columns:repeat(2,1fr)}.fish-grid{grid-template-columns:repeat(4,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.weather-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.home-btn{left:10px}.back-btn{left:10px;top:70px}.music-toggle{right:10px}.grade-grid{grid-template-columns:1fr}.tile-grid{grid-template-columns:1fr 1fr;gap:10px}.tile{min-height:110px;font-size:18px}.board-content{left:7%;right:7%;top:14%}.activity-wrap{padding:90px 3% 25px}.wood-panel{padding:15px}.calendar-row{grid-template-columns:1fr}.fish-grid{grid-template-columns:repeat(3,1fr)}.weather-grid{grid-template-columns:1fr}.trace-letter{font-size:150px}}
+
+
+/* Exact-reference scene pages */
+.scene-body{
+  margin:0;
+  min-height:100vh;
+  overflow:hidden;
+  background:#55c9d1;
+}
+.scene-page{
+  position:relative;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.scene-art{
+  display:block;
+  width:min(100vw, 150vh);
+  height:min(100vh, 66.6666667vw);
+  max-width:100vw;
+  max-height:100vh;
+  object-fit:contain;
+  flex:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+.scene-hotspot{
+  position:absolute;
+  z-index:5;
+  border:0;
+  background:transparent;
+  padding:0;
+  margin:0;
+  cursor:pointer;
+  border-radius:28px;
+}
+.scene-hotspot:focus-visible{
+  outline:5px solid #fff;
+  box-shadow:0 0 0 9px rgba(255,196,0,.85);
+}
+.scene-hotspot:hover{
+  background:rgba(255,255,255,.06);
+}
+
+/* Homepage artwork is 16:9. START is placed over the lower central area. */
+.home-start{
+  left:50%;
+  top:76%;
+  transform:translate(-50%,-50%);
+  width:22%;
+  height:11%;
+  min-width:180px;
+}
+.home-start::after{
+  content:"START";
+  display:block;
+  font-family:"Fredoka",system-ui,sans-serif;
+  font-size:clamp(22px,3vw,42px);
+  font-weight:800;
+  color:#fff;
+  text-shadow:0 4px 0 #6b351c;
+  background:linear-gradient(#ff8a36,#f05b20);
+  border:5px solid #6b351c;
+  border-radius:28px;
+  box-shadow:0 8px 0 #6b351c,inset 0 5px 0 rgba(255,255,255,.35);
+  padding:.25em .8em;
+}
+.home-start:active{transform:translate(-50%,calc(-50% + 5px))}
+
+/* Homepage music control: small invisible hotspot over the reference artwork. */
+.home-music{
+  right:4.5%;
+  top:3.2%;
+  width:15%;
+  height:9%;
+}
+
+/* Activity reference is 3:2 (1536x1024). Coordinates below follow that artwork. */
+.activity-home{
+  left:1.2%;
+  top:1.4%;
+  width:8%;
+  height:11%;
+}
+.activity-music{
+  right:1.3%;
+  top:1.6%;
+  width:18%;
+  height:11%;
+}
+.grade1-hotspot{
+  left:22.5%;
+  top:39%;
+  width:27%;
+  height:45%;
+}
+.grade2-hotspot{
+  left:51%;
+  top:39%;
+  width:27%;
+  height:45%;
+}
+
+@media (max-width:700px){
+  .scene-hotspot:hover{background:transparent}
+  .home-start{min-width:145px}
+}
