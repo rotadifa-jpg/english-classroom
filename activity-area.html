@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>English Class - Choose a Grade</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="scene-body">
+<main class="scene-page activity-scene" aria-label="Choose Grade 1 or Grade 2">
+  <img class="scene-art" src="assets/images/activity-area.png" alt="English Class activity area with Grade 1 and Grade 2 choices">
+
+  <!-- The artwork already contains the visible Home and Music controls. These hotspots make them functional. -->
+  <button class="scene-hotspot activity-home" data-home aria-label="Home"></button>
+  <button class="scene-hotspot activity-music" data-music aria-label="Toggle music"></button>
+
+  <!-- The artwork already contains the visible Grade 1 and Grade 2 buttons. -->
+  <button class="scene-hotspot grade1-hotspot" data-go="grade1.html" aria-label="Go to Grade 1"></button>
+  <button class="scene-hotspot grade2-hotspot" data-go="grade2.html" aria-label="Go to Grade 2"></button>
+</main>
+<script src="js/app.js"></script>
+</body>
+</html>
